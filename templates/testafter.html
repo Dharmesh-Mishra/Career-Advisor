@@ -1,0 +1,158 @@
+
+<html>
+<head>
+  <meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		 <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+
+		<title>Intelligent Career Guidance System</title>
+
+		<!-- Google font -->
+		<link href="https://fonts.googleapis.com/css?family=Lato:700%7CMontserrat:400,600" rel="stylesheet">
+		
+
+  <link href="{{ url_for('static', filename='chart.css') }}" rel="stylesheet" media="all">
+  
+  <link href="{{ url_for('static', filename='css1/bootstrap.min.css') }}" rel="stylesheet" media="all">
+  
+  <link href="{{ url_for('static', filename='css1/font-awesome.min.css') }}" rel="stylesheet" media="all">
+  
+  <link href="{{ url_for('static', filename='css1/s.css') }}" rel="stylesheet" media="all">
+  <link href='https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400' rel='stylesheet' type='text/css'>
+</head>
+<body>
+<!--Header-->
+<header id="header" class="transparent-nav" style="position: fixed; background-color: black; top: 0; width: 100%; z-index: 1000;">
+    <div class="container" style="text-align: center;">
+
+        <!-- Logo on First Line and Centered -->
+        <div class="navbar-brand" style="width: 100%; margin-bottom: 10px;">
+            <a class="logo" href="main.php" style="font-size: 48px; font-weight: bold; color: white; text-transform: uppercase; display: inline-block;">Career Advisor</a>
+        </div>
+
+        <!-- Navigation on Second Line -->
+        <div style="width: 100%;">
+            <nav id="nav" style="text-align: center;">
+                <ul class="main-menu nav navbar-nav" style="justify-content: center; gap: 15px; padding: 0; list-style: none;">
+                    <li><a href="http://localhost/Intelligent%20IT%20Career%20Advisor/main.php" style="color: white;">Home</a></li>
+                    <li><a href="http://127.0.0.1:5000/" style="color: white;">Career Prediction</a></li>
+                    <li><a href="http://localhost/Intelligent%20IT%20Career%20Advisor/community.php" style="color: white;">Community</a></li>
+                    <li><a href="http://localhost/Intelligent%20IT%20Career%20Advisor/courses.php" style="color: white;">Courses</a></li>
+                    <li><a href="http://localhost/Intelligent%20IT%20Career%20Advisor/blog.php" style="color: white;">Knowledge Network</a></li>
+                    <li><a href="http://localhost/Intelligent%20IT%20Career%20Advisor/main.php#about" style="color: white;">About Us</a></li>
+                    <li><a href="http://localhost/Intelligent%20IT%20Career%20Advisor/contact.php" style="color: white;">Contact Us</a></li>
+                    
+                  
+                        <li><a href="http://localhost/Intelligent%20IT%20Career%20Advisor/logout.php" style="color: white;">Log out</a></li>
+             
+                </ul>
+            </nav>
+        </div>
+
+    </div>
+</header>
+   <br><br><br><br><br><br><br>
+   <b><h1>Hey! The top job roles that matched your skills.....</h1><br><br></b>
+   <div class="graph-cont">
+   <h1>You can be a great:</h1><br>
+   <div class="bar bar1" ><a href="blog.php" style="text-decoration: none;"><font color="white">{{ job0 }}</a></font></div><br>
+	
+		
+		
+	  
+	 
+	 {%for key, value in final_res.items(): %}
+		{%if job0!=job_dict[value]%}
+		 <div class="bar bar2"><a href="blog.php" style="text-decoration: none;"><font color="white">{{job_dict[value]}}</a></font></div><br>
+
+	 
+	 
+	 
+		
+		
+					<!--<div class="bar bar2"><a href="#" style="text-decoration: none;"><font color="white">{{job_dict[value]|e}}</a></font></div><br> --> 
+		              
+
+		<!--	<div class="bar bar2"><a href="#" style="text-decoration: none;"><font color="white">{{job_dict[value]}}</a></font></div><br>  
+		
+		-->
+		{%endif%}
+	 {%endfor%}
+	 
+	
+
+	 
+	
+	 
+	 
+	 
+      
+   <!--<div class="bar bar2"><a href="#" style="text-decoration: none;"><font color="white">{{ job1 }}</a></font></div><br>
+   <div class="bar bar3" ><a href="#" style="text-decoration: none;"><font color="white">{{ job2 }}</a></font></div><br>
+   <div class="bar bar4"><a href="#" style="text-decoration: none;"><font color="white">{{ job3 }}</a></font></div><br>-->
+	
+  </div>
+  <br><br><br><br><br><br><br>
+  <!-- Footer -->
+		<footer id="footer" class="section">
+
+			<!-- container -->
+			<div class="container">
+
+				<!-- row -->
+				<div class="row">
+
+					<!-- footer logo -->
+					<div class="col-md-6">
+						<div class="footer-logo">
+							<a class="logo" style="font-size: 30px;" href="main.php">Career Advisor</a>
+						</div>
+					</div>
+					<!-- footer logo -->
+
+
+				</div>
+				<!-- /row -->
+
+				<!-- row -->
+				<div id="bottom-footer" class="row">
+
+					<!-- social -->
+					<div class="col-md-4 col-md-push-8">
+						
+					</div>
+					<!-- /social -->
+
+					<!-- copyright -->
+					<div class="col-md-8 col-md-pull-4">
+						<div class="footer-copyright">
+							<span>&copy; Copyright 2024. All Rights Reserved. </span>
+						</div>
+					</div>
+					<!-- /copyright -->
+					</div>
+				<!-- row -->
+
+			</div>
+			<!-- /container -->
+
+		</footer>
+		<!-- /Footer -->
+
+</body>
+</html>
+<!--
+
+           
+      #print(jobs_dict[predictions[0]])
+      job = {}
+      #job[0] = jobs_dict[predictions[0]]
+      index = 1
+     #
+
+-->
+
+
+
+

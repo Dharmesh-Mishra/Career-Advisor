@@ -1,0 +1,1384 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		 <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+
+		<title>Intelligent Career Guidance System</title>
+
+		<!-- Google font -->
+		<link href="https://fonts.googleapis.com/css?family=Lato:700%7CMontserrat:400,600" rel="stylesheet">
+		
+
+  <link href="{{ url_for('static', filename='chart.css') }}" rel="stylesheet" media="all">
+  
+  <link href="{{ url_for('static', filename='css1/bootstrap.min.css') }}" rel="stylesheet" media="all">
+  
+  <link href="{{ url_for('static', filename='css1/font-awesome.min.css') }}" rel="stylesheet" media="all">
+  
+  <link href="{{ url_for('static', filename='css1/s.css') }}" rel="stylesheet" media="all">
+  <link href='https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400' rel='stylesheet' type='text/css'>
+<style>.tabs {
+    margin: 20px;
+}
+
+.tab-list {
+    list-style-type: none;
+    padding: 0;
+    display: flex;
+}
+
+.tab {
+    padding: 10px 20px;
+    cursor: pointer;
+    background-color: #f1f1f1;
+    border: 1px solid #ccc;
+    margin-right: 5px;
+}
+
+.tab.active {
+    background-color: #fff;
+    border-bottom: 1px solid transparent; /* This will give a nice active tab effect */
+}
+
+.tab-content {
+    display: none;
+}
+
+.tab-content.active {
+    display: block;
+}
+</style>
+</head>
+<body>
+<!--Header-->
+<header id="header" class="transparent-nav" style="position: fixed; background-color: black; top: 0; width: 100%; z-index: 1000;">
+    <div class="container" style="text-align: center;">
+
+        <!-- Logo on First Line and Centered -->
+        <div class="navbar-brand" style="width: 100%; margin-bottom: 10px;">
+            <a class="logo" href="main.php" style="font-size: 48px; font-weight: bold; color: white; text-transform: uppercase; display: inline-block;">Career Advisor</a>
+        </div>
+
+        <!-- Navigation on Second Line -->
+        <div style="width: 100%;">
+            <nav id="nav" style="text-align: center;">
+                <ul class="main-menu nav navbar-nav" style="justify-content: center; gap: 15px; padding: 0; list-style: none;">
+                    <li><a href="http://localhost/Intelligent%20IT%20Career%20Advisor/main.php" style="color: white;">Home</a></li>
+                    <li><a href="http://127.0.0.1:5000/" style="color: white;">Career Prediction</a></li>
+                    <li><a href="http://localhost/Intelligent%20IT%20Career%20Advisor/community.php" style="color: white;">Community</a></li>
+                    <li><a href="http://localhost/Intelligent%20IT%20Career%20Advisor/courses.php" style="color: white;">Courses</a></li>
+                    <li><a href="http://localhost/Intelligent%20IT%20Career%20Advisor/blog.php" style="color: white;">Knowledge Network</a></li>
+                    <li><a href="http://localhost/Intelligent%20IT%20Career%20Advisor/main.php#about" style="color: white;">About Us</a></li>
+                    <li><a href="http://localhost/Intelligent%20IT%20Career%20Advisor/contact.php" style="color: white;">Contact Us</a></li>
+                    
+                  
+                        <li><a href="http://localhost/Intelligent%20IT%20Career%20Advisor/logout.php" style="color: white;">Log out</a></li>
+             
+                </ul>
+            </nav>
+        </div>
+
+    </div>
+</header>
+
+		<div class="hero-area section">
+
+			<!-- Backgound Image -->
+			<div class="bg-image bg-parallax overlay" style="background-image:url(static/img/bgc2.jpg); " ></div>
+			<!-- /Backgound Image -->
+
+			<div class="container">
+				<div class="row" >
+					<div class="col-md-10 col-md-offset-1 text-center">
+						
+						<h1 class="white-text">Get Started to Discover Yourself!</h1>
+
+					</div>
+				</div>
+			</div>
+
+		</div>
+
+    <!-- Icons font CSS-->
+
+    <link href=" {{ url_for('static', filename='vendor/mdi-font/css/material-design-iconic-font.min.css') }}" rel="stylesheet" media="all">
+
+    <link href="{{ url_for('static', filename='vendor/font-awesome-4.7/css/font-awesome.min.css') }}" rel="stylesheet" media="all">
+    <link href="{{ url_for('static', filename='css/range.scss') }}" rel="stylesheet" media="all">
+    <!-- Font special for pages-->
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i,800,800i" rel="stylesheet">
+
+    <!-- Vendor CSS-->
+
+    <link href="{{ url_for('static', filename='vendor/select2/select2.min.css') }}" rel="stylesheet" media="all">
+
+    <link href="{{ url_for('static', filename='vendor/datepicker/daterangepicker.css') }}" rel="stylesheet" media="all">
+      <!-- Main CSS-->
+
+    <link href="{{ url_for('static', filename='css/main.css') }}" rel="stylesheet" media="all">
+</head>
+
+<body>
+    <div class="page-wrapper bg-gra-03 p-t-45 p-b-50">
+        <div class="wrapper wrapper--w790">
+
+			<div class="tabs">
+				<ul class="tab-list">
+					<li class="tab active" onclick="showTab('selfAssessment')">Self Assessment</li>
+					<li class="tab" onclick="showTab('quiz')">Quiz</li>
+				</ul>
+				<div id="selfAssessment" class="tab-content active">
+
+            <div class="card card-5">
+                <div class="card-heading">
+                    <h2 class="title">Rate Yourself.....!!</h2>
+				
+                </div>
+				
+				
+        <div class="card-body">
+                    
+			<form id="selfAssessmentForm" method="POST", action="{{url_for('result')}}">
+						
+				<div class="form-group row">
+							<label  class="col-sm-3  col-form-label">Database Fundamentals</label>
+							<div class="col-sm-9">
+							<select class="form-select form-control" required aria-label="select example" name="rate_Database Fundamentals">
+								  <option value="">Choose option</option>
+								 <option value="1">Not Interested</option>
+									<option value="2">Poor</option>
+									<option value="3">Beginner</option>
+									<option value="5">Average</option>
+									<option value="6">Intermediate</option>
+									<option value="7">Excellent</option>
+									<option value="9">Professional</option>
+								</select>
+							
+						    </div>
+				</div>
+				<div class="form-group row">
+							<label  class="col-sm-3  col-form-label">Computer Architecture</label>
+							<div class="col-sm-9">
+							 <select class="form-select form-control" required aria-label="select example" name="rate_Computer Architecture" >
+							        <option value="">Choose option</option>
+									<option value="1">Not Interested</option>
+									<option value="2">Poor</option>
+									<option value="3">Beginner</option>
+									<option value="5">Average</option>
+									<option value="6">Intermediate</option>
+									<option value="7">Excellent</option>
+									<option value="9">Professional</option>
+							 </select>
+						    </div>
+				</div>
+				<div class="form-group row">
+							<label  class="col-sm-3  col-form-label">Distributed Computing Systems</label>
+							<div class="col-sm-9">
+							 <select class="form-select form-control" required aria-label="select example" name="rate_Distributed Computing Systems" >
+							        <option value="">Choose option</option>
+									<option value="1">Not Interested</option>
+									<option value="2">Poor</option>
+									<option value="3">Beginner</option>
+									<option value="5">Average</option>
+									<option value="6">Intermediate</option>
+									<option value="7">Excellent</option>
+									<option value="9">Professional</option>
+							 </select>
+						    </div>
+				</div>
+				<div class="form-group row">
+							<label  class="col-sm-3  col-form-label">Cyber Security</label>
+							<div class="col-sm-9">
+							 <select class="form-select form-control" required aria-label="select example" name="rate_Cyber Security" >
+							        <option value="" >Choose option</option>
+									<option value="1">Not Interested</option>
+									<option value="2">Poor</option>
+									<option value="3">Beginner</option>
+									<option value="5">Average</option>
+									<option value="6">Intermediate</option>
+									<option value="7">Excellent</option>
+									<option value="9">Professional</option>
+							 </select>
+						    </div>
+				</div>
+				<div class="form-group row">
+							<label  class="col-sm-3  col-form-label">Computer Networking</label>
+							<div class="col-sm-9">
+							 <select class="form-select form-control" required aria-label="select example" name="rate_Networking" >
+							        <option value="">Choose option</option>
+									<option value="1">Not Interested</option>
+									<option value="2">Poor</option>
+									<option value="3">Beginner</option>
+									<option value="5">Average</option>
+									<option value="6">Intermediate</option>
+									<option value="7">Excellent</option>
+									<option value="9">Professional</option>
+							 </select>
+						    </div>
+				</div>
+				<div class="form-group row">
+							<label  class="col-sm-3  col-form-label">Software Development</label>
+							<div class="col-sm-9">
+							 <select class="form-select form-control" required aria-label="select example" name="rate_Development" >
+							        <option value="">Choose option</option>
+									<option value="1">Not Interested</option>
+									<option value="2">Poor</option>
+									<option value="3">Beginner</option>
+									<option value="5">Average</option>
+									<option value="6">Intermediate</option>
+									<option value="7">Excellent</option>
+									<option value="9">Professional</option>
+							 </select>
+						    </div>
+				</div>
+				<div class="form-group row">
+							<label  class="col-sm-3  col-form-label">Programming Skills</label>
+							<div class="col-sm-9">
+							 <select class="form-select form-control" required aria-label="select example" name="rate_Programming Skills" >
+							        <option value="">Choose option</option>
+									<option value="1">Not Interested</option>
+									<option value="2">Poor</option>
+									<option value="3">Beginner</option>
+									<option value="5">Average</option>
+									<option value="6">Intermediate</option>
+									<option value="7">Excellent</option>
+									<option value="9">Professional</option>
+							 </select>
+						    </div>
+				</div>
+				<div class="form-group row">
+							<label  class="col-sm-3  col-form-label">Project Management</label>
+							<div class="col-sm-9">
+							 <select class="form-select form-control" required aria-label="select example" name="rate_Project Management" >
+							        <option value="">Choose option</option>
+									<option value="1">Not Interested</option>
+									<option value="2">Poor</option>
+									<option value="3">Beginner</option>
+									<option value="5">Average</option>
+									<option value="6">Intermediate</option>
+									<option value="7">Excellent</option>
+									<option value="9">Professional</option>
+							 </select>
+						    </div>
+				</div>
+				<div class="form-group row">
+							<label  class="col-sm-3  col-form-label">Computer Forensics Fundamentals</label>
+							<div class="col-sm-9">
+							 <select class="form-select form-control" required aria-label="select example" name="rate_Computer Forensics Fundamentals" >
+							        <option value="">Choose option</option>
+									<option value="1">Not Interested</option>
+									<option value="2">Poor</option>
+									<option value="3">Beginner</option>
+									<option value="5">Average</option>
+									<option value="6">Intermediate</option>
+									<option value="7">Excellent</option>
+									<option value="9">Professional</option>
+							 </select>
+						    </div>
+				</div>
+				<div class="form-group row">
+							<label  class="col-sm-3  col-form-label">Technical Communication skills</label>
+							<div class="col-sm-9">
+							 <select class="form-select form-control" required aria-label="select example" name="rate_Technical Communication" >
+							        <option value="">Choose option</option>
+									<option value="1">Not Interested</option>
+									<option value="2">Poor</option>
+									<option value="3">Beginner</option>
+									<option value="5">Average</option>
+									<option value="6">Intermediate</option>
+									<option value="7">Excellent</option>
+									<option value="9">Professional</option>
+							 </select>
+						    </div>
+				</div>
+				<div class="form-group row">
+							<label  class="col-sm-3  col-form-label">AI ML</label>
+							<div class="col-sm-9">
+							 <select class="form-select form-control" required aria-label="select example" name="rate_AI ML" >
+							        <option value="">Choose option</option>
+									<option value="1">Not Interested</option>
+									<option value="2">Poor</option>
+									<option value="3">Beginner</option>
+									<option value="5">Average</option>
+									<option value="6">Intermediate</option>
+									<option value="7">Excellent</option>
+									<option value="9">Professional</option>
+							 </select>
+						    </div>
+				</div>
+				<div class="form-group row">
+							<label  class="col-sm-3  col-form-label">Software Engineering</label>
+							<div class="col-sm-9">
+							 <select class="form-select form-control" required aria-label="select example" name="rate_se" >
+							        <option value="">Choose option</option>
+									<option value="1">Not Interested</option>
+									<option value="2">Poor</option>
+									<option value="3">Beginner</option>
+									<option value="5">Average</option>
+									<option value="6">Intermediate</option>
+									<option value="7">Excellent</option>
+									<option value="9">Professional</option>
+							 </select>
+						    </div>
+				</div>
+				<div class="form-group row">
+							<label  class="col-sm-3  col-form-label">Business Analysis</label>
+							<div class="col-sm-9">
+							 <select class="form-select form-control" required aria-label="select example" name="rate_Business Analysis" >
+							        <option disabled= "disabled" selected="selected">Choose option</option>
+									<option value="1">Not Interested</option>
+									<option value="2">Poor</option>
+									<option value="3">Beginner</option>
+									<option value="5">Average</option>
+									<option value="6">Intermediate</option>
+									<option value="7">Excellent</option>
+									<option value="9">Professional</option>
+							 </select>
+						    </div>
+				</div>
+				<div class="form-group row">
+							<label  class="col-sm-3  col-form-label">Communication skills</label>
+							<div class="col-sm-9">
+							 <select class="form-select form-control" required aria-label="select example" name="rate_Communication skills" >
+							        <option value="">Choose option</option>
+									<option value="1">Not Interested</option>
+									<option value="2">Poor</option>
+									<option value="3">Beginner</option>
+									<option value="5">Average</option>
+									<option value="6">Intermediate</option>
+									<option value="7">Excellent</option>
+									<option value="9">Professional</option>
+							 </select>
+						    </div>
+				</div>
+				<div class="form-group row">
+							<label  class="col-sm-3 col-form-label">Data Science</label>
+							<div class="col-sm-9">
+							 <select class="form-select form-control" required aria-label="select example" name="rate_Data Science" >
+							        <option value="">Choose option</option>
+									<option value="1">Not Interested</option>
+									<option value="2">Poor</option>
+									<option value="3">Beginner</option>
+									<option value="5">Average</option>
+									<option value="6">Intermediate</option>
+									<option value="7">Excellent</option>
+									<option value="9">Professional</option>
+							 </select>
+						    </div>
+				</div>
+				<div class="form-group row">
+							<label  class="col-sm-3  col-form-label">Troubleshooting skills</label>
+							<div class="col-sm-9">
+							 <select  class="form-control" name="rate_Troubleshooting skills" >
+							        <option value="">Choose option</option>
+									<option value="1">Not Interested</option>
+									<option value="2">Poor</option>
+									<option value="3">Beginner</option>
+									<option value="5">Average</option>
+									<option value="6">Intermediate</option>
+									<option value="7">Excellent</option>
+									<option value="9">Professional</option>
+							 </select>
+						    </div>
+							
+                </div>
+				<div class="form-group row">
+							<label  class="col-sm-3  col-form-label">Graphics Designing</label>
+							<div class="col-sm-9">
+							 <select  class="form-control" name="rate" >
+							        <option value="">Choose option</option>
+									<option value="1">Not Interested</option>
+									<option value="2">Poor</option>
+									<option value="3">Beginner</option>
+									<option value="5">Average</option>
+									<option value="6">Intermediate</option>
+									<option value="7">Excellent</option>
+									<option value="9">Professional</option>
+							 </select>
+						    </div>
+							
+                </div>
+                <center>
+                    <button class="btn btn--radius-2 btn--red" type="reset">Reset</button>    
+                    <button class="btn btn--radius-2 btn--red" type="submit" >Discover Yourself!</button>
+                </center>	
+
+			</form>		
+		</div>
+		</div>
+	</div>
+</div>
+</div>
+
+
+<div id="quiz" class="tab-content" style="color:black">
+    <form id="quizForm">
+		<h2>Database Fundamentals Quiz</h2>
+        <div class="form-group">
+            <label>Question 1 (1 mark): What is the purpose of a primary key in a database?</label><br>
+            <input type="radio" name="q11" value="1"> To store large data<br>
+            <input type="radio" name="q11" value="2"> To maintain unique records in a table<br>
+            <input type="radio" name="q11" value="3"> To link tables in a relational database<br>
+        </div>
+
+        <div class="form-group">
+            <label>Question 2 (2 mark): Which SQL command is used to retrieve data from a database?</label><br>
+            <input type="radio" name="q12" value="1"> DELETE<br>
+            <input type="radio" name="q12" value="2"> INSERT<br>
+            <input type="radio" name="q12" value="3"> SELECT<br>
+        </div>
+
+        <div class="form-group">
+            <label>Question 3 (3 mark): What is a foreign key in a relational database?</label><br>
+            <input type="radio" name="q13" value="1"> A key that links two tables<br>
+            <input type="radio" name="q13" value="2"> A primary key in a table<br>
+            <input type="radio" name="q13" value="3"> A key used for encryption<br>
+        </div>
+
+		<h2>Computer Architecture</h2>
+        <div class="form-group">
+            <label>Question 1 (1 mark): What is the purpose of a primary key in a database?</label><br>
+            <input type="radio" name="q21" value="1"> To store large data<br>
+            <input type="radio" name="q21" value="2"> To maintain unique records in a table<br>
+            <input type="radio" name="q21" value="3"> To link tables in a relational database<br>
+        </div>
+
+        <div class="form-group">
+            <label>Question 2 (2 mark): Which SQL command is used to retrieve data from a database?</label><br>
+            <input type="radio" name="q22" value="1"> DELETE<br>
+            <input type="radio" name="q22" value="2"> INSERT<br>
+            <input type="radio" name="q22" value="3"> SELECT<br>
+        </div>
+
+        <div class="form-group">
+            <label>Question 3 (3 mark): What is a foreign key in a relational database?</label><br>
+            <input type="radio" name="q23" value="1"> A key that links two tables<br>
+            <input type="radio" name="q23" value="2"> A primary key in a table<br>
+            <input type="radio" name="q23" value="3"> A key used for encryption<br>
+        </div>
+
+
+		<h2>Distributed Computing Systems</h2>
+        <div class="form-group">
+            <label>Question 1 (1 mark): What is the purpose of a primary key in a database?</label><br>
+            <input type="radio" name="q31" value="1"> To store large data<br>
+            <input type="radio" name="q31" value="2"> To maintain unique records in a table<br>
+            <input type="radio" name="q31" value="3"> To link tables in a relational database<br>
+        </div>
+
+        <div class="form-group">
+            <label>Question 2 (2 mark): Which SQL command is used to retrieve data from a database?</label><br>
+            <input type="radio" name="q32" value="1"> DELETE<br>
+            <input type="radio" name="q32" value="2"> INSERT<br>
+            <input type="radio" name="q32" value="3"> SELECT<br>
+        </div>
+
+        <div class="form-group">
+            <label>Question 3 (3 mark): What is a foreign key in a relational database?</label><br>
+            <input type="radio" name="q33" value="1"> A key that links two tables<br>
+            <input type="radio" name="q33" value="2"> A primary key in a table<br>
+            <input type="radio" name="q33" value="3"> A key used for encryption<br>
+        </div>
+
+
+		<h2>Cyber Security</h2>
+<div class="form-group">
+    <label>Question 1 (1 mark): What is the purpose of a primary key in a database?</label><br>
+    <input type="radio" name="q41" value="1"> To store large data<br>
+    <input type="radio" name="q41" value="2"> To maintain unique records in a table<br>
+    <input type="radio" name="q41" value="3"> To link tables in a relational database<br>
+</div>
+
+<div class="form-group">
+    <label>Question 2 (2 mark): Which SQL command is used to retrieve data from a database?</label><br>
+    <input type="radio" name="q42" value="1"> DELETE<br>
+    <input type="radio" name="q42" value="2"> INSERT<br>
+    <input type="radio" name="q42" value="3"> SELECT<br>
+</div>
+
+<div class="form-group">
+    <label>Question 3 (3 mark): What is a foreign key in a relational database?</label><br>
+    <input type="radio" name="q43" value="1"> A key that links two tables<br>
+    <input type="radio" name="q43" value="2"> A primary key in a table<br>
+    <input type="radio" name="q43" value="3"> A key used for encryption<br>
+</div>
+
+<h2>Computer Networking</h2>
+<div class="form-group">
+    <label>Question 1 (1 mark): What is the purpose of a primary key in a database?</label><br>
+    <input type="radio" name="q51" value="1"> To store large data<br>
+    <input type="radio" name="q51" value="2"> To maintain unique records in a table<br>
+    <input type="radio" name="q51" value="3"> To link tables in a relational database<br>
+</div>
+
+<div class="form-group">
+    <label>Question 2 (2 mark): Which SQL command is used to retrieve data from a database?</label><br>
+    <input type="radio" name="q52" value="1"> DELETE<br>
+    <input type="radio" name="q52" value="2"> INSERT<br>
+    <input type="radio" name="q52" value="3"> SELECT<br>
+</div>
+
+<div class="form-group">
+    <label>Question 3 (3 mark): What is a foreign key in a relational database?</label><br>
+    <input type="radio" name="q53" value="1"> A key that links two tables<br>
+    <input type="radio" name="q53" value="2"> A primary key in a table<br>
+    <input type="radio" name="q53" value="3"> A key used for encryption<br>
+</div>
+
+<h2>Software Development</h2>
+<div class="form-group">
+    <label>Question 1 (1 mark): What is the purpose of a primary key in a database?</label><br>
+    <input type="radio" name="q61" value="1"> To store large data<br>
+    <input type="radio" name="q61" value="2"> To maintain unique records in a table<br>
+    <input type="radio" name="q61" value="3"> To link tables in a relational database<br>
+</div>
+
+<div class="form-group">
+    <label>Question 2 (2 mark): Which SQL command is used to retrieve data from a database?</label><br>
+    <input type="radio" name="q62" value="1"> DELETE<br>
+    <input type="radio" name="q62" value="2"> INSERT<br>
+    <input type="radio" name="q62" value="3"> SELECT<br>
+</div>
+
+<div class="form-group">
+    <label>Question 3 (3 mark): What is a foreign key in a relational database?</label><br>
+    <input type="radio" name="q63" value="1"> A key that links two tables<br>
+    <input type="radio" name="q63" value="2"> A primary key in a table<br>
+    <input type="radio" name="q63" value="3"> A key used for encryption<br>
+</div>
+
+
+<h2>Programming Skills</h2>
+<div class="form-group">
+    <label>Question 1 (1 mark): What is the purpose of a primary key in a database?</label><br>
+    <input type="radio" name="q71" value="1"> To store large data<br>
+    <input type="radio" name="q71" value="2"> To maintain unique records in a table<br>
+    <input type="radio" name="q71" value="3"> To link tables in a relational database<br>
+</div>
+
+<div class="form-group">
+    <label>Question 2 (2 mark): Which SQL command is used to retrieve data from a database?</label><br>
+    <input type="radio" name="q72" value="1"> DELETE<br>
+    <input type="radio" name="q72" value="2"> INSERT<br>
+    <input type="radio" name="q72" value="3"> SELECT<br>
+</div>
+
+<div class="form-group">
+    <label>Question 3 (3 mark): What is a foreign key in a relational database?</label><br>
+    <input type="radio" name="q73" value="1"> A key that links two tables<br>
+    <input type="radio" name="q73" value="2"> A primary key in a table<br>
+    <input type="radio" name="q73" value="3"> A key used for encryption<br>
+</div>
+
+<h2>Project Management</h2>
+<div class="form-group">
+    <label>Question 1 (1 mark): What is the purpose of a primary key in a database?</label><br>
+    <input type="radio" name="q81" value="1"> To store large data<br>
+    <input type="radio" name="q81" value="2"> To maintain unique records in a table<br>
+    <input type="radio" name="q81" value="3"> To link tables in a relational database<br>
+</div>
+
+<div class="form-group">
+    <label>Question 2 (2 mark): Which SQL command is used to retrieve data from a database?</label><br>
+    <input type="radio" name="q82" value="1"> DELETE<br>
+    <input type="radio" name="q82" value="2"> INSERT<br>
+    <input type="radio" name="q82" value="3"> SELECT<br>
+</div>
+
+<div class="form-group">
+    <label>Question 3 (3 mark): What is a foreign key in a relational database?</label><br>
+    <input type="radio" name="q83" value="1"> A key that links two tables<br>
+    <input type="radio" name="q83" value="2"> A primary key in a table<br>
+    <input type="radio" name="q83" value="3"> A key used for encryption<br>
+</div>
+
+<h2>Computer Forensics Fundamentals</h2>
+<div class="form-group">
+    <label>Question 1 (1 mark): What is the purpose of a primary key in a database?</label><br>
+    <input type="radio" name="q91" value="1"> To store large data<br>
+    <input type="radio" name="q91" value="2"> To maintain unique records in a table<br>
+    <input type="radio" name="q91" value="3"> To link tables in a relational database<br>
+</div>
+
+<div class="form-group">
+    <label>Question 2 (2 mark): Which SQL command is used to retrieve data from a database?</label><br>
+    <input type="radio" name="q92" value="1"> DELETE<br>
+    <input type="radio" name="q92" value="2"> INSERT<br>
+    <input type="radio" name="q92" value="3"> SELECT<br>
+</div>
+
+<div class="form-group">
+    <label>Question 3 (3 mark): What is a foreign key in a relational database?</label><br>
+    <input type="radio" name="q93" value="1"> A key that links two tables<br>
+    <input type="radio" name="q93" value="2"> A primary key in a table<br>
+    <input type="radio" name="q93" value="3"> A key used for encryption<br>
+</div>
+
+<h2>Technical Communication Skills</h2>
+<div class="form-group">
+    <label>Question 1 (1 mark): What is the purpose of a primary key in a database?</label><br>
+    <input type="radio" name="q101" value="1"> To store large data<br>
+    <input type="radio" name="q101" value="2"> To maintain unique records in a table<br>
+    <input type="radio" name="q101" value="3"> To link tables in a relational database<br>
+</div>
+
+<div class="form-group">
+    <label>Question 2 (2 mark): Which SQL command is used to retrieve data from a database?</label><br>
+    <input type="radio" name="q102" value="1"> DELETE<br>
+    <input type="radio" name="q102" value="2"> INSERT<br>
+    <input type="radio" name="q102" value="3"> SELECT<br>
+</div>
+
+<div class="form-group">
+    <label>Question 3 (3 mark): What is a foreign key in a relational database?</label><br>
+    <input type="radio" name="q103" value="1"> A key that links two tables<br>
+    <input type="radio" name="q103" value="2"> A primary key in a table<br>
+    <input type="radio" name="q103" value="3"> A key used for encryption<br>
+</div>
+
+<h2>AI ML</h2>
+<div class="form-group">
+    <label>Question 1 (1 mark): What is the purpose of a primary key in a database?</label><br>
+    <input type="radio" name="q111" value="1"> To store large data<br>
+    <input type="radio" name="q111" value="2"> To maintain unique records in a table<br>
+    <input type="radio" name="q111" value="3"> To link tables in a relational database<br>
+</div>
+
+<div class="form-group">
+    <label>Question 2 (2 mark): Which SQL command is used to retrieve data from a database?</label><br>
+    <input type="radio" name="q112" value="1"> DELETE<br>
+    <input type="radio" name="q112" value="2"> INSERT<br>
+    <input type="radio" name="q112" value="3"> SELECT<br>
+</div>
+
+<div class="form-group">
+    <label>Question 3 (3 mark): What is a foreign key in a relational database?</label><br>
+    <input type="radio" name="q113" value="1"> A key that links two tables<br>
+    <input type="radio" name="q113" value="2"> A primary key in a table<br>
+    <input type="radio" name="q113" value="3"> A key used for encryption<br>
+</div>
+
+<h2>Software Engineering</h2>
+<div class="form-group">
+    <label>Question 1 (1 mark): What is the purpose of a primary key in a database?</label><br>
+    <input type="radio" name="q121" value="1"> To store large data<br>
+    <input type="radio" name="q121" value="2"> To maintain unique records in a table<br>
+    <input type="radio" name="q121" value="3"> To link tables in a relational database<br>
+</div>
+
+<div class="form-group">
+    <label>Question 2 (2 mark): Which SQL command is used to retrieve data from a database?</label><br>
+    <input type="radio" name="q122" value="1"> DELETE<br>
+    <input type="radio" name="q122" value="2"> INSERT<br>
+    <input type="radio" name="q122" value="3"> SELECT<br>
+</div>
+
+<div class="form-group">
+    <label>Question 3 (3 mark): What is a foreign key in a relational database?</label><br>
+    <input type="radio" name="q123" value="1"> A key that links two tables<br>
+    <input type="radio" name="q123" value="2"> A primary key in a table<br>
+    <input type="radio" name="q123" value="3"> A key used for encryption<br>
+</div>
+
+<h2>Business Analysis</h2>
+<div class="form-group">
+    <label>Question 1 (1 mark): What is the purpose of a primary key in a database?</label><br>
+    <input type="radio" name="q131" value="1"> To store large data<br>
+    <input type="radio" name="q131" value="2"> To maintain unique records in a table<br>
+    <input type="radio" name="q131" value="3"> To link tables in a relational database<br>
+</div>
+
+<div class="form-group">
+    <label>Question 2 (2 mark): Which SQL command is used to retrieve data from a database?</label><br>
+    <input type="radio" name="q132" value="1"> DELETE<br>
+    <input type="radio" name="q132" value="2"> INSERT<br>
+    <input type="radio" name="q132" value="3"> SELECT<br>
+</div>
+
+<div class="form-group">
+    <label>Question 3 (3 mark): What is a foreign key in a relational database?</label><br>
+    <input type="radio" name="q133" value="1"> A key that links two tables<br>
+    <input type="radio" name="q133" value="2"> A primary key in a table<br>
+    <input type="radio" name="q133" value="3"> A key used for encryption<br>
+</div>
+
+
+
+<h2>Communication skills</h2>
+<div class="form-group">
+    <label>Question 1 (1 mark): What is the purpose of a primary key in a database?</label><br>
+    <input type="radio" name="q141" value="1"> To store large data<br>
+    <input type="radio" name="q141" value="2"> To maintain unique records in a table<br>
+    <input type="radio" name="q141" value="3"> To link tables in a relational database<br>
+</div>
+
+<div class="form-group">
+    <label>Question 2 (2 mark): Which SQL command is used to retrieve data from a database?</label><br>
+    <input type="radio" name="q142" value="1"> DELETE<br>
+    <input type="radio" name="q142" value="2"> INSERT<br>
+    <input type="radio" name="q142" value="3"> SELECT<br>
+</div>
+
+<div class="form-group">
+    <label>Question 3 (3 mark): What is a foreign key in a relational database?</label><br>
+    <input type="radio" name="q143" value="1"> A key that links two tables<br>
+    <input type="radio" name="q143" value="2"> A primary key in a table<br>
+    <input type="radio" name="q143" value="3"> A key used for encryption<br>
+</div>
+
+<h2>Data Science</h2>
+<div class="form-group">
+    <label>Question 1 (1 mark): What is the purpose of a primary key in a database?</label><br>
+    <input type="radio" name="q151" value="1"> To store large data<br>
+    <input type="radio" name="q151" value="2"> To maintain unique records in a table<br>
+    <input type="radio" name="q151" value="3"> To link tables in a relational database<br>
+</div>
+
+<div class="form-group">
+    <label>Question 2 (2 mark): Which SQL command is used to retrieve data from a database?</label><br>
+    <input type="radio" name="q152" value="1"> DELETE<br>
+    <input type="radio" name="q152" value="2"> INSERT<br>
+    <input type="radio" name="q152" value="3"> SELECT<br>
+</div>
+
+<div class="form-group">
+    <label>Question 3 (3 mark): What is a foreign key in a relational database?</label><br>
+    <input type="radio" name="q153" value="1"> A key that links two tables<br>
+    <input type="radio" name="q153" value="2"> A primary key in a table<br>
+    <input type="radio" name="q153" value="3"> A key used for encryption<br>
+</div>
+
+<h2>Troubleshooting skills</h2>
+<div class="form-group">
+    <label>Question 1 (1 mark): What is the purpose of a primary key in a database?</label><br>
+    <input type="radio" name="q161" value="1"> To store large data<br>
+    <input type="radio" name="q161" value="2"> To maintain unique records in a table<br>
+    <input type="radio" name="q161" value="3"> To link tables in a relational database<br>
+</div>
+
+<div class="form-group">
+    <label>Question 2 (2 mark): Which SQL command is used to retrieve data from a database?</label><br>
+    <input type="radio" name="q162" value="1"> DELETE<br>
+    <input type="radio" name="q162" value="2"> INSERT<br>
+    <input type="radio" name="q162" value="3"> SELECT<br>
+</div>
+
+<div class="form-group">
+    <label>Question 3 (3 mark): What is a foreign key in a relational database?</label><br>
+    <input type="radio" name="q163" value="1"> A key that links two tables<br>
+    <input type="radio" name="q163" value="2"> A primary key in a table<br>
+    <input type="radio" name="q163" value="3"> A key used for encryption<br>
+</div>
+
+<h2>Graphics Designing</h2>
+<div class="form-group">
+    <label>Question 1 (1 mark): What is the purpose of a primary key in a database?</label><br>
+    <input type="radio" name="q171" value="1"> To store large data<br>
+    <input type="radio" name="q171" value="2"> To maintain unique records in a table<br>
+    <input type="radio" name="q171" value="3"> To link tables in a relational database<br>
+</div>
+
+<div class="form-group">
+    <label>Question 2 (2 mark): Which SQL command is used to retrieve data from a database?</label><br>
+    <input type="radio" name="q172" value="1"> DELETE<br>
+    <input type="radio" name="q172" value="2"> INSERT<br>
+    <input type="radio" name="q172" value="3"> SELECT<br>
+</div>
+
+<div class="form-group">
+    <label>Question 3 (3 mark): What is a foreign key in a relational database?</label><br>
+    <input type="radio" name="q173" value="1"> A key that links two tables<br>
+    <input type="radio" name="q173" value="2"> A primary key in a table<br>
+    <input type="radio" name="q173" value="3"> A key used for encryption<br>
+</div>
+
+
+        <center>
+            <button class="btn btn--radius-2 btn--red" type="reset">Reset Quiz</button>
+            <button class="btn btn--radius-2 btn--red" type="button" onclick="submitQuiz()">Submit Quiz</button>
+        </center>
+    </form>
+</div>
+
+
+</div>
+
+<script>
+    function submitQuiz() {
+        // Get selected answers from the quiz
+        const quizForm = document.getElementById('quizForm');
+        const formData = new FormData(quizForm);
+
+        // Default scoring system for correct answers with different weights
+        const correctAnswers = {
+            q11: 2, // The second answer (index 2) is correct for Question 1
+            q12: 3, // The third answer (index 3) is correct for Question 2
+            q13: 1,  // The first answer (index 1) is correct for Question 3
+			q21: 2, // The second answer (index 2) is correct for Question 1
+            q22: 3, // The third answer (index 3) is correct for Question 2
+            q23: 1,  // The first answer (index 1) is correct for Question 3
+			q31: 2, // The second answer (index 2) is correct for Question 1
+            q32: 3, // The third answer (index 3) is correct for Question 2
+            q33: 1,  // The first answer (index 1) is correct for Question 3
+			q41: 2, // The second answer (index 2) is correct for Question 1
+            q42: 3, // The third answer (index 3) is correct for Question 2
+            q43: 1,  // The first answer (index 1) is correct for Question 3
+			q51: 2, // The second answer (index 2) is correct for Question 1
+            q52: 3, // The third answer (index 3) is correct for Question 2
+            q53: 1,  // The first answer (index 1) is correct for Question 3
+			q61: 2, // The second answer (index 2) is correct for Question 1
+            q62: 3, // The third answer (index 3) is correct for Question 2
+            q63: 1,  // The first answer (index 1) is correct for Question 3
+			q71: 2, // The second answer (index 2) is correct for Question 1
+            q72: 3, // The third answer (index 3) is correct for Question 2
+            q73: 1,  // The first answer (index 1) is correct for Question 3
+			q81: 2, // The second answer (index 2) is correct for Question 1
+            q82: 3, // The third answer (index 3) is correct for Question 2
+            q83: 1,  // The first answer (index 1) is correct for Question 3
+			q91: 2, // The second answer (index 2) is correct for Question 1
+            q92: 3, // The third answer (index 3) is correct for Question 2
+            q93: 1,  // The first answer (index 1) is correct for Question 3
+			q101: 2, // The second answer (index 2) is correct for Question 1
+            q102: 3, // The third answer (index 3) is correct for Question 2
+            q103: 1,  // The first answer (index 1) is correct for Question 3
+			q111: 2, // The second answer (index 2) is correct for Question 1
+            q112: 3, // The third answer (index 3) is correct for Question 2
+            q113: 1,  // The first answer (index 1) is correct for Question 3
+			q121: 2, // The second answer (index 2) is correct for Question 1
+            q122: 3, // The third answer (index 3) is correct for Question 2
+            q123: 1,  // The first answer (index 1) is correct for Question 3
+			q131: 2, // The second answer (index 2) is correct for Question 1
+            q132: 3, // The third answer (index 3) is correct for Question 2
+            q133: 1,  // The first answer (index 1) is correct for Question 3
+			q141: 2, // The second answer (index 2) is correct for Question 1
+            q142: 3, // The third answer (index 3) is correct for Question 2
+            q143: 1,  // The first answer (index 1) is correct for Question 3
+			q151: 2, // The second answer (index 2) is correct for Question 1
+            q152: 3, // The third answer (index 3) is correct for Question 2
+            q153: 1,  // The first answer (index 1) is correct for Question 3
+			q161: 2, // The second answer (index 2) is correct for Question 1
+            q162: 3, // The third answer (index 3) is correct for Question 2
+            q163: 1,  // The first answer (index 1) is correct for Question 3
+			q171: 2, // The second answer (index 2) is correct for Question 1
+            q172: 3, // The third answer (index 3) is correct for Question 2
+            q173: 1,  // The first answer (index 1) is correct for Question 3
+        };
+
+        // Weights for each question
+        const weights = {
+            q11: 1,  // Question 1 is worth 1 mark
+            q12: 2,  // Question 2 is worth 2 marks
+            q13: 3,   // Question 3 is worth 3 marks
+			q21: 1,  // Question 1 is worth 1 mark
+            q22: 2,  // Question 2 is worth 2 marks
+            q23: 3,   // Question 3 is worth 3 marks
+			q31: 1,  // Question 1 is worth 1 mark
+            q32: 2,  // Question 2 is worth 2 marks
+            q33: 3,   // Question 3 is worth 3 marks
+			q41: 1,  // Question 1 is worth 1 mark
+            q42: 2,  // Question 2 is worth 2 marks
+            q43: 3,   // Question 3 is worth 3 marks
+			q51: 1,  // Question 1 is worth 1 mark
+            q52: 2,  // Question 2 is worth 2 marks
+            q53: 3,   // Question 3 is worth 3 marks
+			q61: 1,  // Question 1 is worth 1 mark
+            q62: 2,  // Question 2 is worth 2 marks
+            q63: 3,   // Question 3 is worth 3 marks
+			q71: 1,  // Question 1 is worth 1 mark
+            q72: 2,  // Question 2 is worth 2 marks
+            q73: 3,   // Question 3 is worth 3 marks
+			q81: 1,  // Question 1 is worth 1 mark
+            q82: 2,  // Question 2 is worth 2 marks
+            q83: 3,   // Question 3 is worth 3 marks
+			q91: 1,  // Question 1 is worth 1 mark
+            q92: 2,  // Question 2 is worth 2 marks
+            q93: 3,   // Question 3 is worth 3 marks
+			q101: 1,  // Question 1 is worth 1 mark
+            q102: 2,  // Question 2 is worth 2 marks
+            q103: 3,   // Question 3 is worth 3 marks
+			q111: 1,  // Question 1 is worth 1 mark
+            q112: 2,  // Question 2 is worth 2 marks
+            q113: 3,   // Question 3 is worth 3 marks
+			q121: 1,  // Question 1 is worth 1 mark
+            q122: 2,  // Question 2 is worth 2 marks
+            q123: 3,   // Question 3 is worth 3 marks
+			q131: 1,  // Question 1 is worth 1 mark
+            q132: 2,  // Question 2 is worth 2 marks
+            q133: 3,   // Question 3 is worth 3 marks
+			q141: 1,  // Question 1 is worth 1 mark
+            q142: 2,  // Question 2 is worth 2 marks
+            q143: 3,   // Question 3 is worth 3 marks
+			q151: 1,  // Question 1 is worth 1 mark
+            q152: 2,  // Question 2 is worth 2 marks
+            q153: 3,   // Question 3 is worth 3 marks
+			q161: 1,  // Question 1 is worth 1 mark
+            q162: 2,  // Question 2 is worth 2 marks
+            q163: 3,   // Question 3 is worth 3 marks
+			q171: 1,  // Question 1 is worth 1 mark
+            q172: 2,  // Question 2 is worth 2 marks
+            q173: 3,   // Question 3 is worth 3 marks
+			
+			
+        };
+
+        // Calculate total score (max 6)
+         let score1 = 0,score2 = 0,score3 = 0,score4 = 0,score5 = 0,score6 = 0,score7 = 0,score8 = 0,score9 = 0,score10 = 0,score11 = 0,score12 = 0,score13 = 0,score14 = 0,score15 = 0,score16 = 0,score17 = 0; 
+        // for (let question in correctAnswers) {
+        //     if (formData.get(question) == correctAnswers[question]) {
+        //         score1 += weights[question];  // Add the corresponding weight to the score
+        //     }
+        // }
+		for (let question in correctAnswers) {
+    // Section 1: Database Fundamentals
+    if (['q11', 'q12', 'q13'].includes(question)) {
+        if (formData.get(question) == correctAnswers[question]) {
+            score1 += weights[question];  // Add to score1 for section 1
+        }
+    }
+    // Section 2: Computer Architecture
+    else if (['q21', 'q22', 'q23'].includes(question)) {
+        if (formData.get(question) == correctAnswers[question]) {
+            score2 += weights[question];  // Add to score2 for section 2
+        }
+    }
+    // Section 3
+    else if (['q31', 'q32', 'q33'].includes(question)) {
+        if (formData.get(question) == correctAnswers[question]) {
+            score3 += weights[question];  // Add to score3 for section 3
+        }
+    }
+    // Section 4
+    else if (['q41', 'q42', 'q43'].includes(question)) {
+        if (formData.get(question) == correctAnswers[question]) {
+            score4 += weights[question];  // Add to score4 for section 4
+        }
+    }
+    // Section 5
+    else if (['q51', 'q52', 'q53'].includes(question)) {
+        if (formData.get(question) == correctAnswers[question]) {
+            score5 += weights[question];  // Add to score5 for section 5
+        }
+    }
+    // Section 6
+    else if (['q61', 'q62', 'q63'].includes(question)) {
+        if (formData.get(question) == correctAnswers[question]) {
+            score6 += weights[question];  // Add to score6 for section 6
+        }
+    }
+    // Section 7
+    else if (['q71', 'q72', 'q73'].includes(question)) {
+        if (formData.get(question) == correctAnswers[question]) {
+            score7 += weights[question];  // Add to score7 for section 7
+        }
+    }
+    // Section 8
+    else if (['q81', 'q82', 'q83'].includes(question)) {
+        if (formData.get(question) == correctAnswers[question]) {
+            score8 += weights[question];  // Add to score8 for section 8
+        }
+    }
+    // Section 9
+    else if (['q91', 'q92', 'q93'].includes(question)) {
+        if (formData.get(question) == correctAnswers[question]) {
+            score9 += weights[question];  // Add to score9 for section 9
+        }
+    }
+    // Section 10
+    else if (['q101', 'q102', 'q103'].includes(question)) {
+        if (formData.get(question) == correctAnswers[question]) {
+            score10 += weights[question];  // Add to score10 for section 10
+        }
+    }
+    // Section 11
+    else if (['q111', 'q112', 'q113'].includes(question)) {
+        if (formData.get(question) == correctAnswers[question]) {
+            score11 += weights[question];  // Add to score11 for section 11
+        }
+    }
+    // Section 12
+    else if (['q121', 'q122', 'q123'].includes(question)) {
+        if (formData.get(question) == correctAnswers[question]) {
+            score12 += weights[question];  // Add to score12 for section 12
+        }
+    }
+    // Section 13
+    else if (['q131', 'q132', 'q133'].includes(question)) {
+        if (formData.get(question) == correctAnswers[question]) {
+            score13 += weights[question];  // Add to score13 for section 13
+        }
+    }
+    // Section 14
+    else if (['q141', 'q142', 'q143'].includes(question)) {
+        if (formData.get(question) == correctAnswers[question]) {
+            score14 += weights[question];  // Add to score14 for section 14
+        }
+    }
+    // Section 15
+    else if (['q151', 'q152', 'q153'].includes(question)) {
+        if (formData.get(question) == correctAnswers[question]) {
+            score15 += weights[question];  // Add to score15 for section 15
+        }
+    }
+    // Section 16
+    else if (['q161', 'q162', 'q163'].includes(question)) {
+        if (formData.get(question) == correctAnswers[question]) {
+            score16 += weights[question];  // Add to score16 for section 16
+        }
+    }
+    // Section 17
+    else if (['q171', 'q172', 'q173'].includes(question)) {
+        if (formData.get(question) == correctAnswers[question]) {
+            score17 += weights[question];  // Add to score17 for section 17
+        }
+    }
+}
+
+console.log(score1);
+		// Update the self-assessment form based on the score
+        const selfAssessmentSelect1 = document.querySelector('select[name="rate_Database Fundamentals"]');
+		const selfAssessmentSelect2 = document.querySelector('select[name="rate_Computer Architecture"]');
+		const selfAssessmentSelect3 = document.querySelector('select[name="rate_Distributed Computing Systems"]');
+		const selfAssessmentSelect4 = document.querySelector('select[name="rate_Cyber Security"]');
+		const selfAssessmentSelect5 = document.querySelector('select[name="rate_Networking"]');
+		const selfAssessmentSelect6 = document.querySelector('select[name="rate_Development"]');
+		const selfAssessmentSelect7 = document.querySelector('select[name="rate_Programming Skills"]');
+		const selfAssessmentSelect8 = document.querySelector('select[name="rate_Project Management"]');
+		const selfAssessmentSelect9 = document.querySelector('select[name="rate_Computer Forensics Fundamentals"]');
+		const selfAssessmentSelect10 = document.querySelector('select[name="rate_Technical Communication"]');
+		const selfAssessmentSelect11 = document.querySelector('select[name="rate_AI ML"]');
+		const selfAssessmentSelect12 = document.querySelector('select[name="rate_se"]');
+		const selfAssessmentSelect13 = document.querySelector('select[name="rate_Business Analysis"]');
+		const selfAssessmentSelect14 = document.querySelector('select[name="rate_Communication skills"]');
+		const selfAssessmentSelect15 = document.querySelector('select[name="rate_Data Science"]');
+		const selfAssessmentSelect16 = document.querySelector('select[name="rate_Troubleshooting skills"]');
+		const selfAssessmentSelect17 = document.querySelector('select[name="rate"]');
+        if (score1 === 0) {
+            selfAssessmentSelect1.value = 1; // Not Interested
+        } else if (score1 === 1) {
+            selfAssessmentSelect1.value = 2; // Poor
+        } else if (score1 === 2) {
+            selfAssessmentSelect1.value = 3; // Beginner
+        } else if (score1 === 3) {
+            selfAssessmentSelect1.value = 5; // Average
+        } else if (score1 === 4) {
+            selfAssessmentSelect1.value = 6; // Intermediate
+        } else if (score1 === 5) {
+            selfAssessmentSelect1.value = 7; // Excellent
+        } else if (score1 === 6) {
+            selfAssessmentSelect1.value = 9; // Professional
+        }
+
+		if (score2 === 0) {
+            selfAssessmentSelect2.value = 1; // Not Interested
+        } else if (score2 === 1) {
+            selfAssessmentSelect2.value = 2; // Poor
+        } else if (score2 === 2) {
+            selfAssessmentSelect2.value = 3; // Beginner
+        } else if (score2 === 3) {
+            selfAssessmentSelect2.value = 5; // Average
+        } else if (score2 === 4) {
+            selfAssessmentSelect2.value = 6; // Intermediate
+        } else if (score2 === 5) {
+            selfAssessmentSelect2.value = 7; // Excellent
+        } else if (score2 === 6) {
+            selfAssessmentSelect2.value = 9; // Professional
+        }
+
+		if (score3 === 0) {
+            selfAssessmentSelect3.value = 1; // Not Interested
+        } else if (score3 === 1) {
+            selfAssessmentSelect3.value = 2; // Poor
+        } else if (score3 === 2) {
+            selfAssessmentSelect3.value = 3; // Beginner
+        } else if (score3 === 3) {
+            selfAssessmentSelect3.value = 5; // Average
+        } else if (score3 === 4) {
+            selfAssessmentSelect3.value = 6; // Intermediate
+        } else if (score3 === 5) {
+            selfAssessmentSelect3.value = 7; // Excellent
+        } else if (score3 === 6) {
+            selfAssessmentSelect3.value = 9; // Professional
+        }
+
+		if (score4 === 0) {
+            selfAssessmentSelect4.value = 1; // Not Interested
+        } else if (score4 === 1) {
+            selfAssessmentSelect4.value = 2; // Poor
+        } else if (score4 === 2) {
+            selfAssessmentSelect4.value = 3; // Beginner
+        } else if (score4 === 3) {
+            selfAssessmentSelect4.value = 5; // Average
+        } else if (score4 === 4) {
+            selfAssessmentSelect4.value = 6; // Intermediate
+        } else if (score4 === 5) {
+            selfAssessmentSelect4.value = 7; // Excellent
+        } else if (score4 === 6) {
+            selfAssessmentSelect4.value = 9; // Professional
+        }
+
+		if (score5 === 0) {
+            selfAssessmentSelect5.value = 1; // Not Interested
+        } else if (score5 === 1) {
+            selfAssessmentSelect5.value = 2; // Poor
+        } else if (score5 === 2) {
+            selfAssessmentSelect5.value = 3; // Beginner
+        } else if (score5 === 3) {
+            selfAssessmentSelect5.value = 5; // Average
+        } else if (score5 === 4) {
+            selfAssessmentSelect5.value = 6; // Intermediate
+        } else if (score5 === 5) {
+            selfAssessmentSelect5.value = 7; // Excellent
+        } else if (score5 === 6) {
+            selfAssessmentSelect5.value = 9; // Professional
+        }
+
+		if (score6 === 0) {
+            selfAssessmentSelect6.value = 1; // Not Interested
+        } else if (score6 === 1) {
+            selfAssessmentSelect6.value = 2; // Poor
+        } else if (score6 === 2) {
+            selfAssessmentSelect6.value = 3; // Beginner
+        } else if (score6 === 3) {
+            selfAssessmentSelect6.value = 5; // Average
+        } else if (score6 === 4) {
+            selfAssessmentSelect6.value = 6; // Intermediate
+        } else if (score6 === 5) {
+            selfAssessmentSelect6.value = 7; // Excellent
+        } else if (score6 === 6) {
+            selfAssessmentSelect6.value = 9; // Professional
+        }
+
+		if (score7 === 0) {
+            selfAssessmentSelect7.value = 1; // Not Interested
+        } else if (score7 === 1) {
+            selfAssessmentSelect7.value = 2; // Poor
+        } else if (score7 === 2) {
+            selfAssessmentSelect7.value = 3; // Beginner
+        } else if (score7 === 3) {
+            selfAssessmentSelect7.value = 5; // Average
+        } else if (score7 === 4) {
+            selfAssessmentSelect7.value = 6; // Intermediate
+        } else if (score7 === 5) {
+            selfAssessmentSelect7.value = 7; // Excellent
+        } else if (score7 === 6) {
+            selfAssessmentSelect7.value = 9; // Professional
+        }
+
+		if (score8 === 0) {
+            selfAssessmentSelect8.value = 1; // Not Interested
+        } else if (score8 === 1) {
+            selfAssessmentSelect8.value = 2; // Poor
+        } else if (score8 === 2) {
+            selfAssessmentSelect8.value = 3; // Beginner
+        } else if (score8 === 3) {
+            selfAssessmentSelect8.value = 5; // Average
+        } else if (score8 === 4) {
+            selfAssessmentSelect8.value = 6; // Intermediate
+        } else if (score8 === 5) {
+            selfAssessmentSelect8.value = 7; // Excellent
+        } else if (score8 === 6) {
+            selfAssessmentSelect8.value = 9; // Professional
+        }
+
+		if (score9 === 0) {
+            selfAssessmentSelect9.value = 1; // Not Interested
+        } else if (score9 === 1) {
+            selfAssessmentSelect9.value = 2; // Poor
+        } else if (score9 === 2) {
+            selfAssessmentSelect9.value = 3; // Beginner
+        } else if (score9 === 3) {
+            selfAssessmentSelect9.value = 5; // Average
+        } else if (score9 === 4) {
+            selfAssessmentSelect9.value = 6; // Intermediate
+        } else if (score9 === 5) {
+            selfAssessmentSelect9.value = 7; // Excellent
+        } else if (score9 === 6) {
+            selfAssessmentSelect9.value = 9; // Professional
+        }
+
+		if (score10 === 0) {
+            selfAssessmentSelect10.value = 1; // Not Interested
+        } else if (score10 === 1) {
+            selfAssessmentSelect10.value = 2; // Poor
+        } else if (score10 === 2) {
+            selfAssessmentSelect10.value = 3; // Beginner
+        } else if (score10 === 3) {
+            selfAssessmentSelect10.value = 5; // Average
+        } else if (score10 === 4) {
+            selfAssessmentSelect10.value = 6; // Intermediate
+        } else if (score10 === 5) {
+            selfAssessmentSelect10.value = 7; // Excellent
+        } else if (score10 === 6) {
+            selfAssessmentSelect10.value = 9; // Professional
+        }
+
+		if (score11 === 0) {
+            selfAssessmentSelect11.value = 1; // Not Interested
+        } else if (score11 === 1) {
+            selfAssessmentSelect11.value = 2; // Poor
+        } else if (score11 === 2) {
+            selfAssessmentSelect11.value = 3; // Beginner
+        } else if (score11 === 3) {
+            selfAssessmentSelect11.value = 5; // Average
+        } else if (score11 === 4) {
+            selfAssessmentSelect11.value = 6; // Intermediate
+        } else if (score11 === 5) {
+            selfAssessmentSelect11.value = 7; // Excellent
+        } else if (score11 === 6) {
+            selfAssessmentSelect11.value = 9; // Professional
+        }
+
+		if (score12 === 0) {
+            selfAssessmentSelect12.value = 1; // Not Interested
+        } else if (score12 === 1) {
+            selfAssessmentSelect12.value = 2; // Poor
+        } else if (score12 === 2) {
+            selfAssessmentSelect12.value = 3; // Beginner
+        } else if (score12 === 3) {
+            selfAssessmentSelect12.value = 5; // Average
+        } else if (score12 === 4) {
+            selfAssessmentSelect12.value = 6; // Intermediate
+        } else if (score12 === 5) {
+            selfAssessmentSelect12.value = 7; // Excellent
+        } else if (score12 === 6) {
+            selfAssessmentSelect12.value = 9; // Professional
+        }
+
+		if (score13 === 0) {
+    selfAssessmentSelect13.value = 1; // Not Interested
+} else if (score13 === 1) {
+    selfAssessmentSelect13.value = 2; // Poor
+} else if (score13 === 2) {
+    selfAssessmentSelect13.value = 3; // Beginner
+} else if (score13 === 3) {
+    selfAssessmentSelect13.value = 5; // Average
+} else if (score13 === 4) {
+    selfAssessmentSelect13.value = 6; // Intermediate
+} else if (score13 === 5) {
+    selfAssessmentSelect13.value = 7; // Excellent
+} else if (score13 === 6) {
+    selfAssessmentSelect13.value = 9; // Professional
+}
+
+if (score14 === 0) {
+    selfAssessmentSelect14.value = 1; // Not Interested
+} else if (score14 === 1) {
+    selfAssessmentSelect14.value = 2; // Poor
+} else if (score14 === 2) {
+    selfAssessmentSelect14.value = 3; // Beginner
+} else if (score14 === 3) {
+    selfAssessmentSelect14.value = 5; // Average
+} else if (score14 === 4) {
+    selfAssessmentSelect14.value = 6; // Intermediate
+} else if (score14 === 5) {
+    selfAssessmentSelect14.value = 7; // Excellent
+} else if (score14 === 6) {
+    selfAssessmentSelect14.value = 9; // Professional
+}
+
+if (score15 === 0) {
+    selfAssessmentSelect15.value = 1; // Not Interested
+} else if (score15 === 1) {
+    selfAssessmentSelect15.value = 2; // Poor
+} else if (score15 === 2) {
+    selfAssessmentSelect15.value = 3; // Beginner
+} else if (score15 === 3) {
+    selfAssessmentSelect15.value = 5; // Average
+} else if (score15 === 4) {
+    selfAssessmentSelect15.value = 6; // Intermediate
+} else if (score15 === 5) {
+    selfAssessmentSelect15.value = 7; // Excellent
+} else if (score15 === 6) {
+    selfAssessmentSelect15.value = 9; // Professional
+}
+
+if (score16 === 0) {
+    selfAssessmentSelect16.value = 1; // Not Interested
+} else if (score16 === 1) {
+    selfAssessmentSelect16.value = 2; // Poor
+} else if (score16 === 2) {
+    selfAssessmentSelect16.value = 3; // Beginner
+} else if (score16 === 3) {
+    selfAssessmentSelect16.value = 5; // Average
+} else if (score16 === 4) {
+    selfAssessmentSelect16.value = 6; // Intermediate
+} else if (score16 === 5) {
+    selfAssessmentSelect16.value = 7; // Excellent
+} else if (score16 === 6) {
+    selfAssessmentSelect16.value = 9; // Professional
+}
+
+if (score17 === 0) {
+    selfAssessmentSelect17.value = 1; // Not Interested
+} else if (score17 === 1) {
+    selfAssessmentSelect17.value = 2; // Poor
+} else if (score17 === 2) {
+    selfAssessmentSelect17.value = 3; // Beginner
+} else if (score17 === 3) {
+    selfAssessmentSelect17.value = 5; // Average
+} else if (score17 === 4) {
+    selfAssessmentSelect17.value = 6; // Intermediate
+} else if (score17 === 5) {
+    selfAssessmentSelect17.value = 7; // Excellent
+} else if (score17 === 6) {
+    selfAssessmentSelect17.value = 9; // Professional
+}
+
+
+        // Show alert before switching the tab
+        window.alert(`Quiz submitted! Your proficiency has been auto filled based on your scores. Your scores are:
+Database Fundamentals: ${score1}
+Computer Architecture: ${score2}
+Distributed Computing Systems: ${score3}
+Cyber Security: ${score4}
+Computer Networking: ${score5}
+Software Development: ${score6}
+Programming Skills: ${score7}
+Project Management: ${score8}
+Computer Forensics Fundamentals: ${score9}
+Technical Communication skills: ${score10}
+AI ML: ${score11}
+Software Engineering: ${score12}
+Business Analysis: ${score13}
+Communication skills: ${score14}
+Data Science: ${score15}
+Troubleshooting skills: ${score16}
+Graphics Designing: ${score17}
+`);
+
+
+        // Switch to the self-assessment tab to show the updated form
+        showTab('selfAssessment');
+       // selfAssessmentForm.submit();
+    }
+
+    function showTab(tabName) {
+        const tabs = document.querySelectorAll('.tab-content');
+        const tabLinks = document.querySelectorAll('.tab');
+
+        // Hide all tab content
+        tabs.forEach(tab => {
+            tab.classList.remove('active');
+        });
+
+        // Remove active class from all tabs
+        tabLinks.forEach(tab => {
+            tab.classList.remove('active');
+        });
+
+        // Show the selected tab content
+        document.getElementById(tabName).classList.add('active');
+
+        // Set the clicked tab as active
+        const activeTab = Array.from(tabLinks).find(tab => tab.innerText === tabName.replace(/([A-Z])/g, ' $1').trim());
+        if (activeTab) activeTab.classList.add('active');
+    }
+</script>
+
+
+</body>
+</html>
