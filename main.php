@@ -10,7 +10,7 @@ session_start();
 		<div id="home" class="hero-area">
 
     <!-- Background Image -->
-	<div class="bg-image bg-parallax overlay" style="background-image:url(./img/d2.png); background-color:#000000cf; padding-top:50rem; width:100%; height: 650px; margin-top: 50px;"></div>
+	<div class="bg-image bg-parallax overlay" style="background-image:url(./img/d1.png); background-color:#000000cf; padding-top:50rem; width:100%; height: 650px; margin-top: 50px;"></div>
     <!-- /Background Image -->
 
     <div class="home-wrapper" style="padding: 60px 0;"> <!-- Added padding for vertical spacing -->
