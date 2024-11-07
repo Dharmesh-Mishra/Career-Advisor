@@ -10,7 +10,7 @@ session_start();
 		<div id="home" class="hero-area">
 
     <!-- Background Image -->
-    <div class="bg-image bg-parallax overlay" style="background-image:url(./img/back.png); width:100%; height: 700px;"></div>
+	<div class="bg-image bg-parallax overlay" style="background-image:url(./img/d2.png); background-color:#000000cf; padding-top:50rem; width:100%; height: 650px; margin-top: 50px;"></div>
     <!-- /Background Image -->
 
     <div class="home-wrapper" style="padding: 60px 0;"> <!-- Added padding for vertical spacing -->
@@ -24,6 +24,7 @@ session_start();
                         margin-top: 50px; /* Space from the top */
                         margin-bottom: 30px; /* Space below the title */
                         line-height: 1.2;  /* Adjust line spacing */
+						padding-top:10rem;
                     ">
                         Intelligent <br>I.T.<br>Career Advisor
                     </h1>
@@ -40,7 +41,7 @@ session_start();
                             <b>Discover yourself<br>
                             Take the test to find the perfect role for you after<br>I.T Engineering</b> <!-- Added <br> for better break -->
                         </p>
-                        <a class="main-button icon-button" href="login.php" style="margin-top: 20px;">Get Started!</a>
+						<a class="main-button icon-button" href="login.php" style="margin-top: 20px;">Get Started!</a>
                     <?php else: ?>
                         <p class="lead white-text" style="
                             font-size: 22px; 
@@ -52,7 +53,7 @@ session_start();
                             Discover yourself,<br>
                             Take the test to find the perfect role for you after<br>I.T Engineering</b> <!-- Added <br> for better break -->
                         </p>
-                        <a class="main-button icon-button" href="http://127.0.0.1:5000/" style="margin-top: 20px;">Get Started!</a>
+						<a class="main-button icon-button" href="login.php" style="margin-top: 20px;">Get Started!</a>
                   <?php endif ?>
 
                 </div>
@@ -202,7 +203,7 @@ session_start();
 					<div class="col-md-6">
 						<div class="section-header">
 							<h2 style="font-size: 35px;">ABOUT US</h2>
-							<p class="lead" style="font-size: 18px; font-style: italic; margin-top: 50px;">Education seekers get a personalised experience on our site, based on educational background and career interest, enabling them to make well informed course and career decisions. The decision making is empowered with easy access to detailed information on career choices, courses, exams, colleges, admission criteria, eligibility, placement statistics, rankings, reviews, scholarships, latest updates etc as well as by interacting with other users, experts, current students in colleges and alumni groups. We have introduced several student oriented products and tools like Career Prediction, Knowledge Network, Daily Bytes, Blogs, Community discussion forum, and various Courses.</p>
+							<p class="lead" style="font-size: 18px; font-style: italic; margin-top: 50px;">At Intelligent IT Career Advisor, we combine Machine Learning with user-driven assessments to help individuals find their ideal career path in the IT industry. By evaluating both self-reported skill levels and objective assessments across key IT domains, our system offers personalized career recommendations tailored to each user’s strengths and interests. Whether you’re an IT student, a recent graduate, or a professional looking to pivot careers, our goal is to provide data-driven insights that bridge the gap between education and industry needs. We're here to help you navigate the dynamic world of IT and make informed decisions about your career journey.</p>
 							<!--Education seekers get a personalised experience on our site, based on educational background and career interest, enabling them to make well informed course and college decisions. The decision making is empowered with easy access to detailed information on career choices, courses, exams, colleges, admission criteria, eligibility, fees, placement statistics, rankings, reviews, scholarships, latest updates etc as well as by interacting with other Shiksha.com users, experts, current students in colleges and alumni groups. We have introduced several student oriented products and tools like Career Central, Common Application Form, Top Colleges, College Compare, Alumni Employment Stats, Campus Connect, College Reviews, College Predictors, MyShortlist and Shiksha Café.-->
 						</div>
 
@@ -210,7 +211,7 @@ session_start();
 
 					<div class="col-md-6">
 						<div class="about-img">
-							<img src="./img/about.png" alt="">
+							<img src="./img/d1.png" alt="">
 						</div>
 					</div>
 
@@ -226,7 +227,7 @@ session_start();
 		<div id="contact-cta" class="section" style="height: 400px;">
 
 			<!-- Backgound Image -->
-			<div class="bg-image bg-parallax overlay" style="background-image:url(./img/cta2-background.jpg)"></div>
+			<div class="bg-image bg-parallax overlay" style="background-image:url(./img/d3.png)"></div>
 			<!-- Backgound Image -->
 
 			<!-- container -->

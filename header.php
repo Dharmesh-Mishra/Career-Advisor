@@ -97,12 +97,13 @@
 		</header> -->
 
 
-<header id="header" class="transparent-nav" style="position: fixed; background-color: black; top: 0; width: 100%; z-index: 1000;">
-    <div class="container" style="text-align: center;">
+<header id="header" class="transparent-nav" style="position: fixed; background-color: #8387C5; top: 0; width: 100%; z-index: 1000;">
+<div class="container" style="text-align: center; padding-top: 2rem;">
+
 
         <!-- Logo on First Line and Centered -->
         <div class="navbar-brand" style="width: 100%; margin-bottom: 10px;">
-            <a class="logo" href="main.php" style="font-size: 48px; font-weight: bold; color: white; text-transform: uppercase; display: inline-block;">Career Advisor</a>
+            <a class="logo" href="main.php" style="font-size: 48px; font-weight: bold; color: white; text-transform: uppercase; display: inline-block;">Intelligent IT Career Advisor</a>
         </div>
 
         <!-- Navigation on Second Line -->

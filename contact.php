@@ -10,10 +10,10 @@ session_start();
 		<div class="hero-area section">
 
 			<!-- Background Image -->
-			<div class="bg-image bg-parallax overlay" style="background-image:url(./img/bgc2.jpg); "></div>
+			<!-- <div class="bg-image bg-parallax overlay" style="background-image:url(./img/bgc2.jpg); "></div> -->
 			<!-- /Background Image -->
 
-			<div class="container">
+			<!-- <div class="container">
 				<div class="row">
 					<div class="col-md-10 col-md-offset-1 text-center">
 						<ul class="hero-area-tree">
@@ -24,7 +24,7 @@ session_start();
 					</div>
 				</div>
 			</div>
-		</div>
+		</div> -->
 		<!-- /Hero-area -->
 
 		<!-- Contact -->
@@ -78,23 +78,23 @@ session_start();
 		<!-- /Contact -->
 
 		<!-- Footer -->
-		<footer id="footer" class="section">
+		<!-- <footer id="footer" class="section">
 			<!-- container -->
 			<div class="container">
 				<!-- row -->
 				<div class="row">
 					<!-- footer logo -->
-					<div class="col-md-6">
+					<!-- <div class="col-md-6">
 						<div class="footer-logo">
 							<a class="logo" style="font-size: 30px;" href="main.php">Intelligent I.T. Career Advisor</a>
 						</div>
-					</div>
+					</div> -->
 					<!-- footer logo -->
 				</div>
 				<!-- /row -->
 			</div>
 			<!-- /container -->
-		</footer>
+		</footer> -->
 		<!-- /Footer -->
 
 		<!-- preloader -->

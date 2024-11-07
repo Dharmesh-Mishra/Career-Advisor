@@ -8,33 +8,33 @@ session_start();
     <head>
 	<?php include 'header.php'?>
 		<!-- Hero-area -->
-		<div class="hero-area section">
+		<!-- <div class="hero-area section">
 
 			<!-- Backgound Image -->
-			<div class="bg-image bg-parallax overlay" style="background-image:url(./img/bgc2.jpg); " ></div>
+			<!-- <div class="bg-image bg-parallax overlay" style="background-image:url(./img/bgc2.jpg); " ></div> -->
 			<!-- /Backgound Image -->
 
-			<div class="container">
+			<!-- <div class="container">
 				<div class="row" >
 					<div class="col-md-10 col-md-offset-1 text-center">
 						<ul class="hero-area-tree">
 							<li><a href="main.php">Home</a></li>
 							<li>Courses</li>
 						</ul>
-						<h1 class="white-text">Get Started</h1>
+						<a class="main-button icon-button" href="login.php" style="margin-top: 20px;">Get Started!</a>
 
 					</div>
 				</div>
-			</div>
+			</div> -->
 
-		</div>
+		</div> -->
 		<!-- /Hero-area -->
 		
         <!-- Courses -->
 		<div id="courses" class="section">
 
 			<!-- container -->
-			<div class="container">
+			<div class="container" style="padding-top: 10rem;">
 
 				<!-- row 
 				<div class="row">

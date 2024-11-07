@@ -295,11 +295,12 @@ h6 {
 }
 
 .bg-gra-03 {
-  background: -webkit-gradient(linear, left bottom, right top, from(#08aeea), to(#b721ff));
+  /* background: -webkit-gradient(linear, left bottom, right top, from(#08aeea), to(#b721ff));
   background: -webkit-linear-gradient(bottom left, #08aeea 0%, #b721ff 100%);
   background: -moz-linear-gradient(bottom left, #08aeea 0%, #b721ff 100%);
   background: -o-linear-gradient(bottom left, #08aeea 0%, #b721ff 100%);
-  background: linear-gradient(to top right, #08aeea 0%, #b721ff 100%);
+  background: linear-gradient(to top right, #08aeea 0%, #b721ff 100%); */
+  background-color: #f9f9f9cf;
 }
 
 /* ==========================================================================
@@ -749,7 +750,7 @@ input {
 
 .card-5 .card-heading {
   padding: 20px 0;
-  background: #8a2be2;
+  background: #8387C5;
   -webkit-border-top-left-radius: 5px;
   -moz-border-radius-topleft: 10px;
   border-top-left-radius: 10px;

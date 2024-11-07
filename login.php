@@ -1,37 +1,37 @@
 <?php
-// Initialize the session https://www.tutorialrepublic.com/php-tutorial/php-mysql-login-system.php
+// Initialize the session
 session_start();
- 
+
 // Check if the user is already logged in, if yes then redirect him to welcome page
 if(isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true){
     header("location:main.php");
     exit;
 }
- 
+
 // Include config file
 require_once "config.php";
- 
+
 // Define variables and initialize with empty values
 $username = $password = "";
 $username_err = $password_err = $login_err = "";
- 
+
 // Processing form data when form is submitted
 if($_SERVER["REQUEST_METHOD"] == "POST"){
- 
+
     // Check if username is empty
     if(empty(trim($_POST["username"]))){
         $username_err = "Please enter username.";
     } else{
         $username = trim($_POST["username"]);
     }
-    
+
     // Check if password is empty
     if(empty(trim($_POST["password"]))){
         $password_err = "Please enter your password.";
     } else{
         $password = trim($_POST["password"]);
     }
-    
+
     // Validate credentials
     if(empty($username_err) && empty($password_err)){
         // Prepare a select statement
@@ -62,7 +62,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
                             $_SESSION["loggedin"] = true;
                             $_SESSION["id"] = $id;
                             $_SESSION["username"] = $username;                            
-                            
+
                             // Redirect user to welcome page
                             header("location: main.php");
                         } else{
@@ -87,49 +87,106 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
     mysqli_close($link);
 }
 ?>
- 
+
 <!DOCTYPE html>
-<html lang="en" >
+<html lang="en" dir="ltr">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-    <link type="text/css" rel="stylesheet" href="css/s.css"/>
+    <link rel="stylesheet" href="style.css">
     <style>
-        body{ font: 14px sans-serif;
-        margin:auto; 
-        margin-top: 120px;
-        width:500px; 
-        background-color: blueviolet;
-        color: black;
-        
-        
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap');
+
+        body {
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 10px;
+            background: linear-gradient(135deg, #71b7e6, #9b59b6);
         }
-        .wrapper{  border-style: solid;
-        border-color: blue;
-        border-radius: 30px;
-        padding: 20px;  background-color: white;}
+
+        .container {
+            max-width: 400px;
+            width: 100%;
+            background-color: #fff;
+            padding: 25px 30px;
+            border-radius: 5px;
+            box-shadow: 0 5px 10px rgba(0, 0, 0, 0.15);
+        }
+
+        .container .title {
+            font-size: 25px;
+            font-weight: 500;
+            position: relative;
+            margin-bottom: 20px;
+        }
+
+        .content form .user-details {
+            display: flex;
+            flex-direction: column;
+            margin-bottom: 12px;
+        }
+
+        .user-details .input-box {
+            margin-bottom: 15px;
+        }
+
+        .input-box input {
+            height: 45px;
+            width: 100%;
+            outline: none;
+            font-size: 16px;
+            border-radius: 5px;
+            padding-left: 15px;
+            border: 1px solid #ccc;
+            border-bottom-width: 2px;
+            transition: all 0.3s ease;
+        }
+
+        .input-box input:focus {
+            border-color: #9b59b6;
+        }
+
+        .button input {
+            height: 45px;
+            width: 100%;
+            border-radius: 5px;
+            border: none;
+            color: #fff;
+            font-size: 18px;
+            font-weight: 500;
+            letter-spacing: 1px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            background: linear-gradient(135deg, #71b7e6, #9b59b6);
+        }
+
+        .button input:hover {
+            background: linear-gradient(-135deg, #71b7e6, #9b59b6);
+        }
     </style>
 </head>
 <body>
+
     <!--Header-->
     <header id="header" class="transparent-nav" style="position: fixed;background-color: rgb(120, 70, 167); top: 0;">
-			<div class="container">
+        <div class="container">
+            <div class="navbar-header">
+                <!-- Logo -->
+                <div class="navbar-brand">
+                    <a class="logo" href="main.php" style="padding-bottom: 10px;">Intelligent IT Career Advisor</a>
+                </div>
+                <!-- /Logo -->
+            </div>
+        </div>
+    </header>
+    <!-- /Header -->
 
-				<div class="navbar-header">
-					<!-- Logo -->
-					<div class="navbar-brand">
-						<a class="logo" href="main.php" style="padding-bottom: 10px;">Career.ly</a>
-					</div>
-					<!-- /Logo -->
-
-				</div>
-			</div>
-		</header>
-		<!-- /Header -->
-
-    <div class="wrapper" >
-        <h2>Login</h2>
+    <div class="container">
+        <div class="title">Login</div>
         <p>Please fill in your credentials to login.</p>
 
         <?php 
@@ -139,23 +196,23 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
         ?>
 
         <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post">
-            <div class="form-group">
-                <label><b>Username</b></label>
-                <input type="text" name="username" class="form-control <?php echo (!empty($username_err)) ? 'is-invalid' : ''; ?>" value="<?php echo $username; ?>">
-                <span class="invalid-feedback"><?php echo $username_err; ?></span>
-            </div>    
-            <div class="form-group">
-                <label><b>Password</b></label>
-                <input type="password" name="password" class="form-control <?php echo (!empty($password_err)) ? 'is-invalid' : ''; ?>">
-                <span class="invalid-feedback"><?php echo $password_err; ?></span>
+            <div class="user-details">
+                <div class="input-box">
+                    <span class="details">Username</span>
+                    <input type="text" name="username" class="form-control <?php echo (!empty($username_err)) ? 'is-invalid' : ''; ?>" value="<?php echo $username; ?>">
+                    <span class="invalid-feedback"><?php echo $username_err; ?></span>
+                </div>    
+                <div class="input-box">
+                    <span class="details">Password</span>
+                    <input type="password" name="password" class="form-control <?php echo (!empty($password_err)) ? 'is-invalid' : ''; ?>">
+                    <span class="invalid-feedback"><?php echo $password_err; ?></span>
+                </div>
             </div>
-            <div class="form-group">
-                <input type="submit" class="btn btn-primary" value="Login">
+            <div class="button">
+                <input type="submit" value="Login">
             </div>
             <p style="font-size: 16px;">Don't have an account? <a href="register.php" style="color:blue;">Sign up now</a>.</p>
-           
         </form>
     </div>
 </body>
 </html>
-
