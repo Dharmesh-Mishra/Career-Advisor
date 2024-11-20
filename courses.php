@@ -46,7 +46,7 @@ session_start();
 				 -->
 				
 				<!-- tags widget -->
-				<div class="widget tags-widget">
+				<!-- <div class="widget tags-widget">
 					<a class="tag" href="#web">Web</a>
 					<a class="tag" href="#prog">Programming Langauges</a>
 					<a class="tag" href="#">Css</a>
@@ -55,7 +55,7 @@ session_start();
 					<a class="tag" href="#web">Html</a>
 					<a class="tag" href="#">Website</a>
 					<a class="tag" href="#">Business</a>
-				</div>
+				</div> -->
 				<!-- /tags widget -->
 				
 				<!-- courses -->

@@ -58,7 +58,7 @@
                         <li ><a href="login.php">Career Prediction</a></li>
 						<li> <a href="community.php">Community</a></li>
                                <li> <a href="courses.php">Courses</a></li>
-                               <li><a href="blog.php">Knowledge Network</a></li> 
+                               <li><a href="blog.php">Career Roadmaps</a></li> 
 							
 						<li><a href="main.php#about">About Us</a></li>
 						<li><a href="contact.php">Contact Us</a></li>
@@ -81,7 +81,7 @@
                         <li ><a href="http://127.0.0.1:5000/">Career Prediction</a></li>
 						<li> <a href="community.php">Community</a></li>
                                <li> <a href="courses.php">Courses</a></li>
-                               <li><a href="blog.php">Knowledge Network</a></li> 
+                               <li><a href="blog.php">Career Roadmaps</a></li> 
 							
 						<li><a href="main.php#about">About Us</a></li>
 						<li><a href="contact.php">Contact Us</a></li>
@@ -115,7 +115,7 @@
                     <li><a href="login.php" style="color: white;">Career Prediction</a></li>
                     <li><a href="community.php" style="color: white;">Community</a></li>
                     <li><a href="courses.php" style="color: white;">Courses</a></li>
-                    <li><a href="blog.php" style="color: white;">Knowledge Network</a></li>
+                    <li><a href="blog.php" style="color: white;">Career Roadmaps</a></li>
                     <li><a href="main.php#about" style="color: white;">About Us</a></li>
                     <li><a href="contact.php" style="color: white;">Contact Us</a></li>
                     <li><a href="login.php" style="color: white;">Login</a></li>
@@ -129,7 +129,7 @@
                     <li><a href="http://127.0.0.1:5000/" style="color: white;">Career Prediction</a></li>
                     <li><a href="community.php" style="color: white;">Community</a></li>
                     <li><a href="courses.php" style="color: white;">Courses</a></li>
-                    <li><a href="blog.php" style="color: white;">Knowledge Network</a></li>
+                    <li><a href="blog.php" style="color: white;">Career Roadmaps</a></li>
                     <li><a href="main.php#about" style="color: white;">About Us</a></li>
                     <li><a href="contact.php" style="color: white;">Contact Us</a></li>
                     <li><a href="logout.php" style="color: white;">Log out</a></li>

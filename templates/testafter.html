@@ -23,7 +23,7 @@
 </head>
 <body>
 <!--Header-->
-<header id="header" class="transparent-nav" style="position: fixed; background-color: black; top: 0; width: 100%; z-index: 1000;">
+<header id="header" class="transparent-nav" style="position: fixed; background-color: #8387C5; top: 0; width: 100%; z-index: 1000;">
     <div class="container" style="text-align: center;">
 
         <!-- Logo on First Line and Centered -->
@@ -39,7 +39,7 @@
                     <li><a href="http://127.0.0.1:5000/" style="color: white;">Career Prediction</a></li>
                     <li><a href="http://localhost/Intelligent%20IT%20Career%20Advisor/community.php" style="color: white;">Community</a></li>
                     <li><a href="http://localhost/Intelligent%20IT%20Career%20Advisor/courses.php" style="color: white;">Courses</a></li>
-                    <li><a href="http://localhost/Intelligent%20IT%20Career%20Advisor/blog.php" style="color: white;">Knowledge Network</a></li>
+                    <li><a href="http://localhost/Intelligent%20IT%20Career%20Advisor/blog.php" style="color: white;">Career Roadmaps</a></li>
                     <li><a href="http://localhost/Intelligent%20IT%20Career%20Advisor/main.php#about" style="color: white;">About Us</a></li>
                     <li><a href="http://localhost/Intelligent%20IT%20Career%20Advisor/contact.php" style="color: white;">Contact Us</a></li>
                     
@@ -56,7 +56,7 @@
    <b><h1>Hey! The top job roles that matched your skills.....</h1><br><br></b>
    <div class="graph-cont">
    <h1>You can be a great:</h1><br>
-   <div class="bar bar1" ><a href="blog.php" style="text-decoration: none;"><font color="white">{{ job0 }}</a></font></div><br>
+   <div class="bar bar1" ><a href="http://localhost/Intelligent%20IT%20Career%20Advisor/blog.php" style="text-decoration: none;"><font color="white">{{ job0 }}</a></font></div><br>
 	
 		
 		
@@ -64,19 +64,13 @@
 	 
 	 {%for key, value in final_res.items(): %}
 		{%if job0!=job_dict[value]%}
-		 <div class="bar bar2"><a href="blog.php" style="text-decoration: none;"><font color="white">{{job_dict[value]}}</a></font></div><br>
+		 <div class="bar bar2"><a href="http://localhost/Intelligent%20IT%20Career%20Advisor/blog.php" style="text-decoration: none;"><font color="white">{{job_dict[value]}}</a></font></div><br>
 
 	 
 	 
 	 
 		
 		
-					<!--<div class="bar bar2"><a href="#" style="text-decoration: none;"><font color="white">{{job_dict[value]|e}}</a></font></div><br> --> 
-		              
-
-		<!--	<div class="bar bar2"><a href="#" style="text-decoration: none;"><font color="white">{{job_dict[value]}}</a></font></div><br>  
-		
-		-->
 		{%endif%}
 	 {%endfor%}
 	 

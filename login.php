@@ -102,12 +102,20 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
         body {
             height: 100vh;
             display: flex;
-            justify-content: center;
+            flex-direction: column;
+            justify-content: flex-start;;
             align-items: center;
             padding: 10px;
             background: linear-gradient(135deg, #71b7e6, #9b59b6);
         }
-
+        .navbar-brand .logo {
+            font-size: 48px;
+            font-weight: bold;
+            color: white;
+            text-transform: uppercase;
+            display: inline-block;
+            margin: 20px 0;
+        }
         .container {
             max-width: 400px;
             width: 100%;
@@ -171,19 +179,9 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 </head>
 <body>
 
-    <!--Header-->
-    <header id="header" class="transparent-nav" style="position: fixed;background-color: rgb(120, 70, 167); top: 0;">
-        <div class="container">
-            <div class="navbar-header">
-                <!-- Logo -->
-                <div class="navbar-brand">
-                    <a class="logo" href="main.php" style="padding-bottom: 10px;">Intelligent IT Career Advisor</a>
-                </div>
-                <!-- /Logo -->
-            </div>
-        </div>
-    </header>
-    <!-- /Header -->
+<div class="navbar-brand">
+        <a class="logo" href="main.php">Intelligent IT Career Advisor</a>
+    </div>
 
     <div class="container">
         <div class="title">Login</div>

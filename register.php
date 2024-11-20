@@ -95,12 +95,13 @@
         }
 
         body {
-        height: 100vh;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        background: linear-gradient(135deg, #71b7e6, #9b59b6);
-        }
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;;
+    align-items: center;
+    background: linear-gradient(135deg, #71b7e6, #9b59b6);
+    }
 
         .container {
         max-width: 700px;
@@ -110,7 +111,19 @@
         border-radius: 5px;
         box-shadow: 0 5px 10px rgba(0, 0, 0, 0.15);
         }
+        .navbar-brand {
+    width: 100%;
+    margin: 20px 0;
+    text-align: center;
+    }
 
+    .navbar-brand .logo {
+    font-size: 48px;
+    font-weight: bold;
+    color: white;
+    text-transform: uppercase;
+    display: inline-block;
+    }
         .title {
         font-size: 25px;
         font-weight: 500;
@@ -137,7 +150,8 @@
 
         .input-box {
         margin-bottom: 15px;
-        width: calc(100% / 2 - 20px);
+        /* width: calc(100% / 2 - 20px); */
+        width: 100%;
         }
 
         .input-box span.details {
@@ -199,6 +213,9 @@
     </style>
     </head>
     <body>
+    <div class="navbar-brand">
+        <a class="logo" href="main.php">Intelligent IT Career Advisor</a>
+    </div>
     <div class="container">
         <div class="title">Sign Up</div>
         <div class="content">

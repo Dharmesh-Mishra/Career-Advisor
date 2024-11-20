@@ -22,7 +22,7 @@ session_start();
 							<li><a href="main.html">Home</a></li>
 							<li>Knowledge Network</li>
 						</ul> -->
-						<h1 class="white-text">Knowledge Network Page</h1>
+						<h1 class="white-text">Career Roadmaps</h1>
 					</div>
 				</div>
 				
@@ -39,7 +39,7 @@ session_start();
 			<!-- container -->
 			<div class="container">
 				<!-- tags widget -->
-					<div class="widget tags-widget">
+					<!-- <div class="widget tags-widget">
 							<a class="tag" href="#AI ML Specialist">AI ML Specialist</a>
 							<a class="tag" href="#API Integration Specialist ">API Integration Specialist </a>
 							<a class="tag" href="#Penetration Tester">Penetration Tester</a>
@@ -58,7 +58,7 @@ session_start();
 							<a class="tag" href="#Software Tester">Software Tester</a>
 							<a class="tag" href="#Technical writer">Technical writer</a>
 							<a class="tag" href="#Graphic Designer">Graphic Designer</a>
-						</div>
+						</div> -->
 						<!-- /tags widget -->
 				<!-- row -->
 				<div class="row" id="AI ML Specialist">

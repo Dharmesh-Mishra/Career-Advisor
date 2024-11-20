@@ -10,7 +10,7 @@ session_start();
 		<div id="home" class="hero-area">
 
     <!-- Background Image -->
-	<div class="bg-image bg-parallax overlay" style="background-image:url(./img/d2.png); background-color:#000000cf; padding-top:50rem; width:100%; height: 650px; margin-top: 50px;"></div>
+	<div class="bg-image bg-parallax overlay" style="background-image:url(./img/img.png); background-color:#000000cf; padding-top:50rem; width:100%; height: 650px; margin-top: 50px;"></div>
     <!-- /Background Image -->
 
     <div class="home-wrapper" style="padding: 60px 0;"> <!-- Added padding for vertical spacing -->
@@ -49,11 +49,11 @@ session_start();
                             margin-top: 20px; /* Added margin above text */
                             margin-bottom: 40px; /* Added margin below text */
                         ">
-                            <b>Hi, <?php echo htmlspecialchars($_SESSION["username"]); ?>!<br>
-                            Discover yourself,<br>
+                            <b>Hi, <?php echo htmlspecialchars($_SESSION["username"]); ?>!
+                             Discover yourself,<br>
                             Take the test to find the perfect role for you after<br>I.T Engineering</b> <!-- Added <br> for better break -->
                         </p>
-						<a class="main-button icon-button" href="login.php" style="margin-top: 20px;">Get Started!</a>
+						<a class="main-button icon-button" href="http://127.0.0.1:5000/" style="margin-top: 20px;">Get Started!</a>
                   <?php endif ?>
 
                 </div>
@@ -80,7 +80,7 @@ session_start();
 
 						<h2 style="margin-top: 100px; font-size: 45px;">Welcome to Intelligent I.T Career Advisor</h2>
 						<!--<p class="lead">We all want to fly high and in real time!<br> And in this random pursuit of success, we end up making wrong career choices.</p>-->
-						<p class="lead"><b style="color: rgb(56, 48, 48);">Career Adviso</b> is one stop destination <br>in helping you understand yourself, the best career for you <br> and providing all the resources in the process.</p>
+						<p class="lead"><b style="color: rgb(56, 48, 48);">Career Advisor</b> is one stop destination <br>in helping you understand yourself, the best career for you <br> and providing all the resources in the process.</p>
 					</div>
 				</div>	
 
@@ -170,14 +170,14 @@ session_start();
 									<h2 class="white-text" style="font-size: 25px; width:700px ; margin-top:10px;">Your Career Path Begins Here</h2>
 									<p class="lead white-text" >We Create Beautiful Experiences
 										That Drive Successful Careers.</p>
-									<a class="main-button icon-button" href="register.php">Get Started!</a>
+									<a class="main-button icon-button" href="login.php">Get Started!</a>
 								<?php else: ?>
 									<h2 class="white-text" style="font-size: 30px; width:700px ;">Hi, <b><?php echo htmlspecialchars($_SESSION["username"]); ?> !</b></h2>
 
 								<h2 class="white-text" style="font-size: 25px; width:700px ; margin-top:10px;">Your Career Path Begins Here</h2>
 								<p class="lead white-text" >We Create Beautiful Experiences
 									That Drive Successful Careers.</p>
-									<a class="main-button icon-button" href="main.php">Get Started!</a>
+									<a class="main-button icon-button" href="http://127.0.0.1:5000/">Get Started!</a>
 									
 							<?php endif ?>
 					</div>
